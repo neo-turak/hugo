@@ -1,11 +1,11 @@
 package com.github.hugo.room
 
+import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
+import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import com.github.hugo.api.Constants
-import com.github.hugo.application
-import com.github.hugo.model.SoftwareModel
+
 
 /**
  * @author 努尔江
@@ -14,13 +14,26 @@ import com.github.hugo.model.SoftwareModel
  * Description:
  **/
 
-@Database(entities = [SoftwareModel.SoftwareEntity::class], version = 1)
+@Database(entities = [SoftwareEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun softwareDao(): SoftwareDao
-}
 
-val db = Room.databaseBuilder(
-    application,
-    AppDatabase::class.java,
-    Constants.ROOM
-).build()
+    companion object {
+
+      @Volatile
+      private var instance: AppDatabase? = null
+
+        //the name of the database
+        fun getInstance(context: Context): AppDatabase  =
+           instance ?: synchronized(this){
+               instance ?:  databaseBuilder(
+                   context.applicationContext,
+                   AppDatabase::class.java,
+                   Constants.ROOM)
+                   .build().also {
+                       instance = it
+                   }
+           }
+
+    }
+}

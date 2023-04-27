@@ -7,7 +7,7 @@
     <data>
         <variable
             name="software"
-            type="com.github.hugo.model.SoftwareModel.SoftwareEntity" />
+            type="com.github.hugo.room.SoftwareEntity" />
 
     </data>
 

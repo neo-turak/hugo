@@ -20,14 +20,12 @@ import timber.log.Timber
  * Description:
  **/
 
- lateinit var application:Application
 
- @HiltAndroidApp
+val networkFlipperPlugin = NetworkFlipperPlugin()
+@HiltAndroidApp
 class App : Application() {
-
     override fun onCreate() {
         super.onCreate()
-        application = this
         SoLoader.init(this, false)
         //Timber
         initTimber()
@@ -35,13 +33,13 @@ class App : Application() {
         initFlipper()
     }
 
-    private fun initTimber(){
+    private fun initTimber() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
     }
 
-    private fun initFlipper(){
+    private fun initFlipper() {
         if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(this)) {
             val client = AndroidFlipperClient.getInstance(this)
             //layout
@@ -51,7 +49,7 @@ class App : Application() {
             //leak
             client.addPlugin(LeakCanary2FlipperPlugin())
             //network
-            client.addPlugin(NetworkFlipperPlugin())
+            client.addPlugin(networkFlipperPlugin)
             //shared-preferences
             client.addPlugin(SharedPreferencesFlipperPlugin(this))
 

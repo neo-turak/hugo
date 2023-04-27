@@ -2,9 +2,9 @@ package com.github.hugo.api.response
 
 import com.ayvytr.okhttploginterceptor.LoggingInterceptor
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
-import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.github.hugo.api.ApiService
 import com.github.hugo.api.Constants
+import com.github.hugo.networkFlipperPlugin
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -22,7 +22,7 @@ object RetrofitHelper {
     private val okHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(loggingInterceptor)
-        .addNetworkInterceptor(FlipperOkhttpInterceptor(NetworkFlipperPlugin()))
+        .addNetworkInterceptor(FlipperOkhttpInterceptor(networkFlipperPlugin))
         .connectTimeout(10, TimeUnit.SECONDS)
         .readTimeout(10, TimeUnit.SECONDS)
         .writeTimeout(10, TimeUnit.SECONDS)

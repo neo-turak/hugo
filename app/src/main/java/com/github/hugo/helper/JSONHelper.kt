@@ -1,3 +1,4 @@
+
 package com.github.hugo.helper
 
 import com.google.gson.Gson
@@ -10,7 +11,8 @@ import java.lang.reflect.Type
  * JSONHelper
  * 因为Json的初始化，反射浪费资源。
  */
-class JSONHelper private constructor() {
+class JSONHelper
+private constructor() {
     private val gson: Gson
     private val gsonWithExpose: Gson
 
@@ -35,8 +37,7 @@ class JSONHelper private constructor() {
 
     fun <MODEL> fromGsonArray(json: String?, clazz: Class<MODEL>?): List<MODEL> {
         val resultList: MutableList<MODEL> = ArrayList()
-        val jsonParser = JsonParser()
-        val jsonElement = jsonParser.parse(json)
+        val jsonElement = JsonParser.parseString(json)
         var jsonArray: JsonArray? = null
         if (jsonElement.isJsonArray) {
             jsonArray = jsonElement.asJsonArray

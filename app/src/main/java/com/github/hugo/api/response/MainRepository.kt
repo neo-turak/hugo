@@ -3,6 +3,7 @@ package com.github.hugo.api.response
 import com.github.hugo.api.ApiService
 import com.github.hugo.model.SoftwareModel
 import retrofit2.Response
+import javax.inject.Inject
 
 /**
  * @author 努尔江
@@ -11,7 +12,9 @@ import retrofit2.Response
  * Description:
  **/
 
-class ApiServiceImpl : ApiService {
+class MainRepository
+   @Inject
+   constructor() : ApiService {
     override suspend fun getSoftwareList(
         type: String,
         n: String

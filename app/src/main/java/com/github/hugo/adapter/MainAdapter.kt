@@ -1,7 +1,9 @@
 package com.github.hugo.adapter
 
+import com.github.hugo.base.BaseBindingAdapter
+import com.github.hugo.base.VBViewHolder
 import com.github.hugo.databinding.ItemSoftwareBinding
-import com.github.hugo.model.SoftwareModel
+import com.github.hugo.room.SoftwareEntity
 import javax.inject.Inject
 
 /**
@@ -14,10 +16,10 @@ import javax.inject.Inject
 
 class MainAdapter
 @Inject
-constructor() : BaseBindingAdapter<ItemSoftwareBinding, SoftwareModel.SoftwareEntity>() {
+constructor() : BaseBindingAdapter<ItemSoftwareBinding, SoftwareEntity>() {
     override fun convert(
         holder: VBViewHolder<ItemSoftwareBinding>,
-        item: SoftwareModel.SoftwareEntity
+        item: SoftwareEntity
     ) {
         holder.vb.software = item
     }
