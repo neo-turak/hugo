@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="software"
+            type="com.github.hugo.model.SoftwareModel.SoftwareEntity" />
+
+    </data>
+
+    <com.github.neoturak.view.ShapeableConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:shape_cornersRadius="6dp"
+        app:shape_soldColor="#2b2b2b"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标题："
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/_tvTitle1"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/_tvTitle1"
+            app:layout_constraintTop_toTopOf="@id/_tvTitle1"
+            app:layout_constraintBottom_toBottomOf="@id/_tvTitle1"
+            android:textColor="#cc0000"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="20dp"
+            android:text="@{software.title}"
+            />
+
+
+    </com.github.neoturak.view.ShapeableConstraintLayout>
+</layout>

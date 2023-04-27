@@ -1,0 +1,107 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.github.hugo'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.github.hugo"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    // Allow references to generated code
+    kapt {
+        correctErrorTypes true
+    }
+
+    packagingOptions {
+        resources.excludes += "DebugProbesKt.bin"
+    }
+
+    buildFeatures{
+        dataBinding true
+    }
+
+}
+
+dependencies {
+
+    //core lib
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    //hilt
+    implementation 'com.google.dagger:hilt-android:2.45'
+    kapt "com.google.dagger:hilt-compiler:2.45"
+    //room
+    implementation 'androidx.room:room-runtime:2.5.1'
+    kapt 'androidx.room:room-compiler:2.5.1'
+    //image loader
+    implementation 'io.coil-kt:coil:2.3.0'
+    //base rv
+    implementation 'com.github.cymchad:baserecyclerviewadapterhelper:3.0.10'
+    //utils,view,helper
+    implementation 'com.github.neo-turak:ktx:1.2.1'
+    //network
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+    implementation 'io.github.ayvytr:okhttploginterceptor:3.0.8'
+    //gson
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    //view
+    implementation 'androidx.activity:activity-ktx:1.7.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+
+    //coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    //view-model
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+
+    //debug
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+    //flipper
+    debugImplementation 'com.facebook.flipper:flipper:0.190.0'
+    debugImplementation 'com.facebook.soloader:soloader:0.10.5'
+    debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.190.0'
+    releaseImplementation 'com.facebook.flipper:flipper-noop:0.190.0'
+
+    //leaks
+    debugImplementation 'com.facebook.flipper:flipper-leakcanary2-plugin:0.190.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
+    //data store
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+}
