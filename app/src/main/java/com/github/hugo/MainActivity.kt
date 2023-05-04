@@ -1,7 +1,6 @@
 package com.github.hugo
 
 import android.os.Bundle
-import android.transition.TransitionInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.github.hugo.adapter.MainAdapter
@@ -26,11 +25,14 @@ class MainActivity : AppCompatActivity() {
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(decoration)
         vm.softwareList.observe(this) {
+            binding.srl.isRefreshing = false
             adapter.addData(it.softwareList)
             Timber.e("数据--》${it.softwareList.size}")
         }
 
-        var fadeTransaction = TransitionInflater.from(this)
-            .inflateTransition(R.transition.fade_transition)
+        binding.srl.setOnRefreshListener {
+            binding.srl.isRefreshing = true
+            vm.getSoftware()
+        }
     }
 }
