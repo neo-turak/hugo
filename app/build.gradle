@@ -107,4 +107,9 @@ dependencies {
 
     //refresh layout
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    //Toasty
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
+
+    //splash screen
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
 }

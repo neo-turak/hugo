@@ -40,3 +40,16 @@ inline fun <T> Response<HttpResponse<T>>.responseHandler(
         Timber.e("Unsuccessful http request!")
     }
 }
+inline fun <T> Response<T>.responseDataHandler(
+    onSuccess: (T) -> Unit) {
+    if (this.isSuccessful) {
+        val result = this.body()
+        if (result != null) {
+            onSuccess(result)
+            return
+        }
+        Timber.e("Empty response body!")
+    } else {
+        Timber.e("Unsuccessful http request!")
+    }
+}

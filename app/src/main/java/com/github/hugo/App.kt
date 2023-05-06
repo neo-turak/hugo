@@ -22,10 +22,12 @@ import timber.log.Timber
 
 
 val networkFlipperPlugin = NetworkFlipperPlugin()
+lateinit var application: Application
 @HiltAndroidApp
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
+        application = this
         SoLoader.init(this, false)
         //Timber
         initTimber()

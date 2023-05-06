@@ -31,7 +31,6 @@ class MainViewModel
     init {
       //  getSoftware()
     }
-
      fun getSoftware() {
         viewModelScope.launch {
             mainRepository.getSoftwareList().responseHandler {
