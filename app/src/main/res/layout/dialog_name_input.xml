@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/shape_dialog_bg">
+
+        <ImageView
+            android:id="@+id/ivCancel"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:padding="4dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/baseline_close_24"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.github.neoturak.view.ShapeableTextView
+            android:id="@+id/btnCofirm"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="save"
+            android:textColor="@color/white"
+            app:gradient_angle="RIGHT_LEFT"
+            app:gradient_endColor="#EA92E1"
+            app:gradient_centerColor="#BB6DE1"
+            app:gradient_startColor="#9751E1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/svBg"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:shape_cornersRadius="25dp" />
+
+        <TextView
+            android:id="@+id/tvInputName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="26dp"
+            android:text="What shall we call you"
+            android:textColor="#99FFFFFF"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.github.neoturak.view.ShapeableView
+            android:id="@+id/svBg"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvInputName"
+            app:shape_cornersRadius="12dp"
+            app:shape_soldColor="#262626" />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:background="#00000000"
+            android:hint="your_name"
+            android:maxEms="15"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:paddingHorizontal="10dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="#80FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/svBg"
+            app:layout_constraintLeft_toLeftOf="@id/svBg"
+            app:layout_constraintRight_toRightOf="@id/svBg"
+            app:layout_constraintTop_toTopOf="@id/svBg"
+            android:importantForAutofill="no" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

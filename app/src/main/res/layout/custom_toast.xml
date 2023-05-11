@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.neoturak.view.ShapeableTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="13dp"
+    android:textColor="@color/white"
+    android:textSize="14sp"
+    app:shape_cornersRadius="50dp"
+    app:shape_soldColor="#464646"
+    tools:text="Toast文案限制这里显示的宽度" />
+

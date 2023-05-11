@@ -1,3 +1,5 @@
 package com.github.hugo.model
 
-data class MyAppInfo(val appId: Int)
+import com.chad.library.adapter.base.entity.MultiItemEntity
+
+data class MyAppInfo(val appId: Int, override val itemType: Int) : MultiItemEntity
