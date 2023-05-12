@@ -21,7 +21,7 @@ constructor() : BaseBindingAdapter<ItemSoftwareBinding, SoftwareEntity>() {
         holder: VBViewHolder<ItemSoftwareBinding>,
         item: SoftwareEntity
     ) {
-        holder.vb.software = item
+        holder.vb.tvContent.text = item.title
     }
 
 }
