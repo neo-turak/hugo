@@ -17,9 +17,9 @@ android {
         versionCode 1
         versionName "1.0"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
             }
         }
     }
@@ -46,10 +46,9 @@ android {
         resources.excludes += "DebugProbesKt.bin"
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
-
 }
 
 dependencies {
@@ -61,10 +60,18 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     //hilt
     implementation 'com.google.dagger:hilt-android:2.45'
-    kapt "com.google.dagger:hilt-compiler:2.45"
+    kapt('com.google.dagger:hilt-compiler:2.45') {
+        exclude group: 'com.google.guava', module: 'guava'
+        exclude group: 'com.google.devtools.ksp', module: 'symbol-processing-api'
+        exclude group: 'com.squareup', module: 'kotlinpoet'
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+    }
     //room
     implementation 'androidx.room:room-runtime:2.5.1'
-    kapt 'androidx.room:room-compiler:2.5.1'
+    kapt('androidx.room:room-compiler:2.5.1') {
+        exclude group: 'androidx.arch.core:core-runtime:2.1.0', module:'core-runtime'
+    }
     //image loader
     implementation 'io.coil-kt:coil:2.3.0'
     //base rv
@@ -98,6 +105,7 @@ dependencies {
     debugImplementation 'com.facebook.soloader:soloader:0.10.5'
     debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.190.0'
     releaseImplementation 'com.facebook.flipper:flipper-noop:0.190.0'
+    releaseImplementation 'com.github.theGlenn:flipper-android-no-op:0.10.0'
 
     //leaks
     debugImplementation 'com.facebook.flipper:flipper-leakcanary2-plugin:0.190.0'
@@ -112,6 +120,4 @@ dependencies {
 
     //splash screen
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
-    //dialog
-    implementation 'com.github.li-xiaojun:XPopup:2.9.19'
 }

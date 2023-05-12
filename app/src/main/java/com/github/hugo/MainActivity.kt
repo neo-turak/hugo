@@ -3,13 +3,14 @@ package com.github.hugo
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.github.hugo.activity.ActivityImage
 import com.github.hugo.adapter.HelpAdapter
 import com.github.hugo.databinding.ActivityMainBinding
 import com.github.hugo.decoration.MainItemDecoration
-import com.github.hugo.dialog.NameInputDialog
 import com.github.hugo.model.AppInfoModel
 import com.github.hugo.vm.MainViewModel
 import com.github.neoturak.common.singleClick
+import com.github.neoturak.common.startActivity
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         adapter.setNewInstance(vm.multiList)
         adapter.addChildClickViewIds(R.id.image)
-        adapter.setOnItemChildClickListener { adapter, view, position ->
+        adapter.setOnItemChildClickListener { adapter, _, position ->
             val dt = adapter.data[position] as AppInfoModel
             Toasty.success(this,dt.content).show()
         }
@@ -56,12 +57,11 @@ class MainActivity : AppCompatActivity() {
             binding.srl.isRefreshing = true
             vm.getSoftware()
         }
-
         binding.buttonImage.singleClick {
-           // startActivity<ActivityImage>()
+            startActivity<ActivityImage>()
            //HelperDialog().show(this)
            // ConfirmDialog().show(this)
-            NameInputDialog.instance().show(supportFragmentManager,NameInputDialog::class.java.simpleName)
+         //   NameInputDialog.instance().show(supportFragmentManager,NameInputDialog::class.java.simpleName)
         }
     }
 }

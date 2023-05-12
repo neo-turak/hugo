@@ -5,6 +5,7 @@ import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.github.hugo.api.ApiService
 import com.github.hugo.api.Constants
 import com.github.hugo.networkFlipperPlugin
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,11 +29,18 @@ object RetrofitHelper {
         .writeTimeout(10, TimeUnit.SECONDS)
         .build()
 
+    private val gson = GsonBuilder()
+        .serializeNulls()
+        .setLenient()
+        .enableComplexMapKeySerialization()
+        .create()
+    private val gsonConverterFactory = GsonConverterFactory.create(gson)
+
     private val retrofit = Retrofit
         .Builder()
         .baseUrl(Constants.BASE_URL)
         .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(gsonConverterFactory)
         .build()
     var service: ApiService = retrofit.create(ApiService::class.java)
 }

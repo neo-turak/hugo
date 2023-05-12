@@ -33,6 +33,7 @@ class CustomToast {
         binding = CustomToastBinding.inflate(inflater)
     }
 
+    @Suppress("DEPRECATION")
     fun show() {
         val toast = Toast(context)
         toast.duration = duration

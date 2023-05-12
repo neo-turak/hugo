@@ -14,7 +14,7 @@ import com.github.hugo.api.Constants
  * Description:
  **/
 
-@Database(entities = [SoftwareEntity::class], version = 1)
+@Database(entities = [SoftwareEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun softwareDao(): SoftwareDao
 
