@@ -3,17 +3,20 @@ package com.github.hugo
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.github.hugo.activity.ActivityImage
 import com.github.hugo.adapter.HelpAdapter
 import com.github.hugo.databinding.ActivityMainBinding
 import com.github.hugo.decoration.MainItemDecoration
 import com.github.hugo.model.AppInfoModel
 import com.github.hugo.vm.MainViewModel
-import com.github.neoturak.common.singleClick
-import com.github.neoturak.common.startActivity
+import com.github.neoturak.ui.immersiveStatusBar
+import com.github.neoturak.ui.startActivity
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import timber.log.Timber
 import javax.inject.Inject
@@ -31,7 +34,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        adapter.setNewInstance(vm.multiList)
+        immersiveStatusBar()
+    //    adapter.setNewInstance(vm.multiList)
         adapter.addChildClickViewIds(R.id.image)
         adapter.setOnItemChildClickListener { adapter, _, position ->
             val dt = adapter.data[position] as AppInfoModel
@@ -41,11 +45,6 @@ class MainActivity : AppCompatActivity() {
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(decoration)
 
-        vm.softwareList.observe(this) {
-            binding.srl.isRefreshing = false
-
-            Timber.e("数据--》${it.softwareList.size}")
-        }
         //json
         val str = "{\"itemType\":102210032}"
         val json = JSONObject(str)
@@ -53,15 +52,16 @@ class MainActivity : AppCompatActivity() {
         val rm = Gson().fromJson(str, AppInfoModel::class.java)
         val appId2 = rm.itemType
         Timber.e("数据--->${appId1}  $appId2")
-        binding.srl.setOnRefreshListener {
-            binding.srl.isRefreshing = true
-            vm.getSoftware()
-        }
-        binding.buttonImage.singleClick {
+
+         vm.softwareList.observe(this){ model ->
+             adapter.addData(model.softwareList.map { AppInfoModel(it.title,0) })
+         }
+        lifecycleScope.launch {
+            delay(3000)
             startActivity<ActivityImage>()
+        }
            //HelperDialog().show(this)
            // ConfirmDialog().show(this)
          //   NameInputDialog.instance().show(supportFragmentManager,NameInputDialog::class.java.simpleName)
         }
-    }
 }
