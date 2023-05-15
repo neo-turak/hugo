@@ -1,11 +1,9 @@
 package com.github.hugo.api.response
 
 import com.ayvytr.okhttploginterceptor.LoggingInterceptor
-import com.ayvytr.okhttploginterceptor.LoggingInterceptor.Companion.gson
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.github.hugo.api.ApiService
 import com.github.hugo.api.Constants
-import com.github.hugo.api.http.RequestInterceptor
 import com.github.hugo.networkFlipperPlugin
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -22,7 +20,6 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitHelper {
     private val loggingInterceptor = LoggingInterceptor()
-  //  private val requestInterceptor = RequestInterceptor()
     private val okHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(loggingInterceptor)

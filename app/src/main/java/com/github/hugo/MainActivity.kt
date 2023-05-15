@@ -3,20 +3,15 @@ package com.github.hugo
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.github.hugo.activity.ActivityImage
 import com.github.hugo.adapter.HelpAdapter
 import com.github.hugo.databinding.ActivityMainBinding
 import com.github.hugo.decoration.MainItemDecoration
 import com.github.hugo.model.AppInfoModel
 import com.github.hugo.vm.MainViewModel
 import com.github.neoturak.ui.immersiveStatusBar
-import com.github.neoturak.ui.startActivity
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 import timber.log.Timber
 import javax.inject.Inject
@@ -56,10 +51,7 @@ class MainActivity : AppCompatActivity() {
          vm.softwareList.observe(this){ model ->
              adapter.addData(model.softwareList.map { AppInfoModel(it.title,0) })
          }
-        lifecycleScope.launch {
-            delay(3000)
-            startActivity<ActivityImage>()
-        }
+
            //HelperDialog().show(this)
            // ConfirmDialog().show(this)
          //   NameInputDialog.instance().show(supportFragmentManager,NameInputDialog::class.java.simpleName)

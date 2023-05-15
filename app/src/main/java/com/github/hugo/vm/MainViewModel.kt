@@ -37,7 +37,7 @@ class MainViewModel
             AppInfoModel("用甚至造句 1、他委屈地哭了两天，甚至连饭都没吃。 2、不想他真的做到了，甚至还考了校第一。 3、听同学说，某地垃圾成堆，环境受到影响，甚至连猫狗都不去。 4、他不仅骗了大家的钱，甚至连手机也都骗走了。 6、她在我困难时伸出了援助之手，可我甚至不知道她的名",0),
     )
     init {
-    //   getSoftware()
+       getSoftware()
     }
      private fun getSoftware() {
         viewModelScope.launch {
