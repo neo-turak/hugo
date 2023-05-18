@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.SharedFlow
  * @author 努尔江
  * Created on: 2023/5/18
  * @project hugo
- * Description:
+ * Description: 事件总线
  **/
 
 sealed class EventBus<T> {

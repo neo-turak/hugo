@@ -21,5 +21,4 @@ class EventBusImpl<T> : EventBus<T>() {
         Timber.e("Emitting event = $event")
         _events.emit(event)
     }
-
 }

@@ -6,14 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.hugo.adapter.ImageAdapter
 import com.github.hugo.databinding.ActivityImageBinding
 import com.github.hugo.decoration.ImageItemDecoration
-import com.github.hugo.eventBus
 import com.github.hugo.vm.ImageViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -36,14 +30,6 @@ class ActivityImage : AppCompatActivity() {
 
     lateinit var itemDecoration: ImageItemDecoration
 
-    override fun onStart() {
-        super.onStart()
-        CoroutineScope(Dispatchers.IO).launch {
-            eventBus.events.collectLatest {
-                Timber.e("Collected -->${it}")
-            }
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

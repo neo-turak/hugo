@@ -8,16 +8,15 @@ import com.github.hugo.activity.ActivityImage
 import com.github.hugo.adapter.HelpAdapter
 import com.github.hugo.databinding.ActivityMainBinding
 import com.github.hugo.decoration.MainItemDecoration
+import com.github.hugo.events.EventBus
 import com.github.hugo.model.AppInfoModel
 import com.github.hugo.vm.MainViewModel
+import com.github.neoturak.common.singleClick
 import com.github.neoturak.ui.immersiveStatusBar
 import com.github.neoturak.ui.startActivity
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import timber.log.Timber
@@ -33,6 +32,9 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var decoration: MainItemDecoration
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+
+    @Inject
+    lateinit var eventBus: EventBus<AppInfoModel>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -59,12 +61,16 @@ class MainActivity : AppCompatActivity() {
             adapter.addData(model.softwareList.map { AppInfoModel(it.title, 0) })
         }
 
-        CoroutineScope(Dispatchers.IO).launch {
-            eventBus.emitEvent(AppInfoModel("Hello Kotlin", 2))
+        lifecycleScope.launch {
+            eventBus.events.collect {
+                Timber.e("COLLECT-->${it}")
+            }
+        }
+        lifecycleScope.launch {
+         eventBus.emitEvent(AppInfoModel("Hello Kotlin", 2))
         }
 
-        lifecycleScope.launch {
-            delay(2000)
+        binding.btnConfirm.singleClick {
             startActivity<ActivityImage>()
         }
 
