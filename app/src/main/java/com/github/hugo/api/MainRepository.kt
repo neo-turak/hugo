@@ -1,6 +1,6 @@
-package com.github.hugo.api.response
+package com.github.hugo.api
 
-import com.github.hugo.api.ApiService
+import com.github.hugo.api.response.HttpResponse
 import com.github.hugo.model.ImageModel
 import com.github.hugo.model.SoftwareModel
 import retrofit2.Response

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.hugo.api.response.MainRepository
+import com.github.hugo.api.MainRepository
 import com.github.hugo.api.response.responseHandler
 import com.github.hugo.model.AppInfoModel
 import com.github.hugo.model.SoftwareModel

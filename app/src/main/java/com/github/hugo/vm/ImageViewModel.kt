@@ -3,7 +3,7 @@ package com.github.hugo.vm
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.hugo.api.response.MainRepository
+import com.github.hugo.api.MainRepository
 import com.github.hugo.api.response.responseDataHandler
 import com.github.hugo.model.ImageModel
 import dagger.hilt.android.lifecycle.HiltViewModel

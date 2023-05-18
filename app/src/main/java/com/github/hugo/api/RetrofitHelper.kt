@@ -1,11 +1,9 @@
-package com.github.hugo.api.response
+package com.github.hugo.api
 
 import cn.nurasoft.request.DefaultFormatPrinter
 import cn.nurasoft.request.PrintLevel
 import cn.nurasoft.request.RequestInterceptor
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
-import com.github.hugo.api.ApiService
-import com.github.hugo.api.Constants
 import com.github.hugo.networkFlipperPlugin
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

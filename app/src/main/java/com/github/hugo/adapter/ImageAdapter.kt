@@ -1,9 +1,10 @@
 package com.github.hugo.adapter
 
+import androidx.fragment.app.FragmentActivity
 import coil.load
 import com.github.hugo.R
 import com.github.hugo.base.BaseBindingAdapter
-import com.github.hugo.base.VBViewHolder
+import com.github.hugo.base.VBBaseViewHolder
 import com.github.hugo.databinding.ItemImageBinding
 import com.github.hugo.model.ImageModel
 import javax.inject.Inject
@@ -17,9 +18,11 @@ import javax.inject.Inject
 
 class ImageAdapter
 @Inject
-constructor() : BaseBindingAdapter<ItemImageBinding, ImageModel>() {
-    override fun convert(holder: VBViewHolder<ItemImageBinding>, item: ImageModel) {
-        holder.vb.image.load(item.urls.regular){
+constructor(
+    activity: FragmentActivity
+) : BaseBindingAdapter<ItemImageBinding, ImageModel>() {
+    override fun convert(holder: VBBaseViewHolder<ItemImageBinding>, item: ImageModel) {
+        holder.binding.image.load(item.urls.regular) {
             crossfade(true)
             placeholder(R.drawable.spinner_1s_200px)
         }

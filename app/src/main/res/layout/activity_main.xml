@@ -17,7 +17,7 @@
         app:gradient_angle="TOP_BOTTOM"
         />
 
-<com.github.hugo.base.DampScrollLayout
+<com.github.hugo.view.DampScrollLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_marginTop="40dp"
@@ -33,7 +33,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
-</com.github.hugo.base.DampScrollLayout>
+</com.github.hugo.view.DampScrollLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnConfirm"
         android:layout_width="wrap_content"

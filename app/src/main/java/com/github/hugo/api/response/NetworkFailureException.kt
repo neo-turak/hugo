@@ -7,7 +7,7 @@ package com.github.hugo.api.response
  * Description:
  **/
 
-class NetworkFailureException:Exception() {
+class NetworkFailureException : Exception() {
     override val message: String
         get() = "Network failure exception"
 }

@@ -1,4 +1,4 @@
-package com.github.hugo.base
+package com.github.hugo.view
 
 import android.content.Context
 import android.graphics.Rect

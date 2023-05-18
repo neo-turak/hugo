@@ -1,9 +1,11 @@
 package com.github.hugo.adapter
 
+import android.content.Context
 import com.github.hugo.base.BaseBindingAdapter
-import com.github.hugo.base.VBViewHolder
+import com.github.hugo.base.VBBaseViewHolder
 import com.github.hugo.databinding.ItemSoftwareBinding
 import com.github.hugo.room.SoftwareEntity
+import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
 /**
@@ -16,12 +18,15 @@ import javax.inject.Inject
 
 class MainAdapter
 @Inject
-constructor() : BaseBindingAdapter<ItemSoftwareBinding, SoftwareEntity>() {
+constructor(
+   @ActivityContext
+   context: Context
+) : BaseBindingAdapter<ItemSoftwareBinding, SoftwareEntity>() {
     override fun convert(
-        holder: VBViewHolder<ItemSoftwareBinding>,
+        holder: VBBaseViewHolder<ItemSoftwareBinding>,
         item: SoftwareEntity
     ) {
-        holder.vb.tvContent.text = item.title
+        holder.binding.tvContent.text = item.title
     }
 
 }
