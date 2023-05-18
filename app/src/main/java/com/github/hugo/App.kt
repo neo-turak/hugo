@@ -10,6 +10,8 @@ import com.facebook.flipper.plugins.leakcanary2.LeakCanary2FlipperPlugin
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin
 import com.facebook.soloader.SoLoader
+import com.github.hugo.events.EventBus
+import com.github.hugo.model.AppInfoModel
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
@@ -23,6 +25,7 @@ import timber.log.Timber
 
 val networkFlipperPlugin = NetworkFlipperPlugin()
 lateinit var application: Application
+ val eventBus: EventBus<AppInfoModel> = EventBus.create()
 @HiltAndroidApp
 class App : Application() {
     override fun onCreate() {

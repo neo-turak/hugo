@@ -15,6 +15,8 @@ import com.github.neoturak.ui.startActivity
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.json.JSONObject
@@ -35,11 +37,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         immersiveStatusBar()
-    //    adapter.setNewInstance(vm.multiList)
+        //    adapter.setNewInstance(vm.multiList)
         adapter.addChildClickViewIds(R.id.image)
         adapter.setOnItemChildClickListener { adapter, _, position ->
             val dt = adapter.data[position] as AppInfoModel
-            Toasty.success(this,dt.content).show()
+            Toasty.success(this, dt.content).show()
         }
 
         binding.rv.adapter = adapter
@@ -53,17 +55,21 @@ class MainActivity : AppCompatActivity() {
         val appId2 = rm.itemType
         Timber.e("数据--->${appId1}  $appId2")
 
-         vm.softwareList.observe(this){ model ->
-             adapter.addData(model.softwareList.map { AppInfoModel(it.title,0) })
-         }
+        vm.softwareList.observe(this) { model ->
+            adapter.addData(model.softwareList.map { AppInfoModel(it.title, 0) })
+        }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            eventBus.emitEvent(AppInfoModel("Hello Kotlin", 2))
+        }
 
         lifecycleScope.launch {
             delay(2000)
             startActivity<ActivityImage>()
         }
 
-           //HelperDialog().show(this)
-           // ConfirmDialog().show(this)
-         //   NameInputDialog.instance().show(supportFragmentManager,NameInputDialog::class.java.simpleName)
-        }
+        //HelperDialog().show(this)
+        // ConfirmDialog().show(this)
+        //   NameInputDialog.instance().show(supportFragmentManager,NameInputDialog::class.java.simpleName)
+    }
 }
