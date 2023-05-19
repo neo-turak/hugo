@@ -55,4 +55,15 @@
         <item name="android:windowIsFloating">true</item>
     </style>
 
+    <declare-styleable name="OverallProgressView">
+        <attr name="android:progress" />
+        <attr name="android:background" />
+        <attr name="gradient_startColor" />
+        <attr name="gradient_endColor" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CircleColorView">
+        <attr name="shape_soldColor" />
+    </declare-styleable>
 </resources>

@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.github.hugo.activity.ActivityImage
-import com.github.hugo.adapter.HelpAdapter
 import com.github.hugo.databinding.ActivityMainBinding
-import com.github.hugo.decoration.MainItemDecoration
 import com.github.hugo.events.EventBus
 import com.github.hugo.model.AppInfoModel
-import com.github.hugo.vm.MainViewModel
+import com.github.hugo.ui.activity.ActivityImage
+import com.github.hugo.ui.adapter.HelpAdapter
+import com.github.hugo.ui.decoration.MainItemDecoration
+import com.github.hugo.ui.vm.MainViewModel
 import com.github.neoturak.common.singleClick
 import com.github.neoturak.ui.immersiveStatusBar
 import com.github.neoturak.ui.startActivity

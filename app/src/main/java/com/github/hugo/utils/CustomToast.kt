@@ -1,4 +1,4 @@
-package com.github.hugo.base
+package com.github.hugo.utils
 
 import android.content.Context
 import android.view.Gravity

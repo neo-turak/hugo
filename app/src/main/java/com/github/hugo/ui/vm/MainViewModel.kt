@@ -1,4 +1,4 @@
-package com.github.hugo.vm
+package com.github.hugo.ui.vm
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData

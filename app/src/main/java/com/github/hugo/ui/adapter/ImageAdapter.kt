@@ -1,4 +1,4 @@
-package com.github.hugo.adapter
+package com.github.hugo.ui.adapter
 
 import androidx.fragment.app.FragmentActivity
 import coil.load

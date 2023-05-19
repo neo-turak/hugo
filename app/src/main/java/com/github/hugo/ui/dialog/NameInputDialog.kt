@@ -1,4 +1,4 @@
-package com.github.hugo.dialog
+package com.github.hugo.ui.dialog
 
 import android.app.Dialog
 import android.graphics.Color
@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.github.hugo.base.CustomToast
 import com.github.hugo.databinding.DialogNameInputBinding
+import com.github.hugo.utils.CustomToast
 import com.github.neoturak.common.singleClick
 
 class NameInputDialog

@@ -1,4 +1,4 @@
-package com.github.hugo.decoration
+package com.github.hugo.ui.decoration
 
 import android.graphics.Rect
 import android.view.View

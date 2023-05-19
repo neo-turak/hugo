@@ -1,4 +1,4 @@
-package com.github.hugo.adapter
+package com.github.hugo.ui.adapter
 
 import android.content.Context
 import com.github.hugo.base.BaseBindingAdapter
