@@ -30,6 +30,7 @@ abstract class BaseBottomDialog<VB : ViewBinding> : BottomSheetDialogFragment() 
         val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         dialog.behavior.isDraggable = false  // 设置禁止拖拽
         dialog.window?.setDimAmount(setDimValue())
+        setStyle(STYLE_NO_TITLE, R.style.BottomSheetDialog)
         return dialog
     }
 
