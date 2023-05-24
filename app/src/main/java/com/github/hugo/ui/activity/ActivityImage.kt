@@ -37,6 +37,9 @@ class ActivityImage : BaseActivity<ActivityImageBinding>() {
         binding.rvMain.adapter = adapter
         binding.rvMain.addItemDecoration(itemDecoration)
 
+        binding.root.viewTreeObserver.addOnGlobalLayoutListener {
+            
+        }
         binding.refresh.setOnRefreshListener {
             binding.refresh.isRefreshing = false
             vm.getRandomImages()
