@@ -3,7 +3,7 @@ package com.github.hugo.ui.adapter
 import androidx.viewbinding.ViewBinding
 import coil.load
 import com.github.hugo.R
-import com.github.hugo.base.BaseMultiItemAdapter
+import com.github.hugo.base.BaseBindingMultiItemAdapter
 import com.github.hugo.base.VBBaseViewHolder
 import com.github.hugo.databinding.ItemImageBinding
 import com.github.hugo.databinding.ItemSoftwareBinding
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 class HelpAdapter
     @Inject
-    constructor() : BaseMultiItemAdapter<AppInfoModel>() {
+    constructor() : BaseBindingMultiItemAdapter<AppInfoModel>() {
     init {
         addViewBinding(0, ItemSoftwareBinding::inflate)
         addViewBinding(1, ItemImageBinding::inflate)

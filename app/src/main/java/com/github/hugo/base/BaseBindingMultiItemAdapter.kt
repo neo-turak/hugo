@@ -2,6 +2,7 @@ package com.github.hugo.base
 
 import android.util.SparseArray
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
@@ -14,8 +15,8 @@ import com.chad.library.adapter.base.entity.MultiItemEntity
  * Description:
  **/
 
-abstract class BaseMultiItemAdapter<T : MultiItemEntity> :
-    BaseMultiItemQuickAdapter<T, VBBaseViewHolder<ViewBinding>>() {
+abstract class BaseBindingMultiItemAdapter<T : MultiItemEntity> :
+    BaseMultiItemQuickAdapter<T, VBBaseViewHolder<ViewBinding>>(), BaseBindingClick{
     private val bindings: SparseArray<(LayoutInflater, ViewGroup, Boolean) -> ViewBinding> by lazy(
         LazyThreadSafetyMode.NONE
     ) {
@@ -36,4 +37,15 @@ abstract class BaseMultiItemAdapter<T : MultiItemEntity> :
         return  VBBaseViewHolder(viewBinding)
     }
 
+    override fun addChildClickViews(vararg views: View) {
+        for (view in views) {
+            addChildClickViewIds(view.id)
+        }
+    }
+
+    override fun addChildLongClickViews(vararg views: View) {
+        for (view in views) {
+            addChildLongClickViewIds(view.id)
+        }
+    }
 }

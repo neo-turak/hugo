@@ -1,6 +1,7 @@
 package com.github.hugo.base
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -8,8 +9,8 @@ import java.lang.reflect.ParameterizedType
 
 
 
-abstract class BaseBindingAdapter<VB : ViewBinding, T>(data: MutableList<T>? = null) :
-    BaseQuickAdapter<T, VBBaseViewHolder<VB>>(0, data) {
+abstract class BaseBindingBindingAdapter<VB : ViewBinding, T>(data: MutableList<T>? = null) :
+    BaseQuickAdapter<T, VBBaseViewHolder<VB>>(0, data), BaseBindingClick {
 
     //重写返回自定义 ViewHolder
     @Suppress("UNCHECKED_CAST")
@@ -26,5 +27,17 @@ abstract class BaseBindingAdapter<VB : ViewBinding, T>(data: MutableList<T>? = n
         val mBinding =
             inflate.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
         return VBBaseViewHolder(mBinding)
+    }
+
+   override fun addChildClickViews(vararg views: View) {
+        for (view in views) {
+            addChildClickViewIds(view.id)
+        }
+    }
+
+   override fun addChildLongClickViews(vararg views: View) {
+        for (view in views) {
+            addChildLongClickViewIds(view.id)
+        }
     }
 }

@@ -3,7 +3,7 @@ package com.github.hugo.ui.adapter
 import androidx.fragment.app.FragmentActivity
 import coil.load
 import com.github.hugo.R
-import com.github.hugo.base.BaseBindingAdapter
+import com.github.hugo.base.BaseBindingBindingAdapter
 import com.github.hugo.base.VBBaseViewHolder
 import com.github.hugo.databinding.ItemImageBinding
 import com.github.hugo.model.ImageModel
@@ -20,11 +20,13 @@ class ImageAdapter
 @Inject
 constructor(
     activity: FragmentActivity
-) : BaseBindingAdapter<ItemImageBinding, ImageModel>() {
+) : BaseBindingBindingAdapter<ItemImageBinding, ImageModel>() {
     override fun convert(holder: VBBaseViewHolder<ItemImageBinding>, item: ImageModel) {
         holder.binding.image.load(item.urls.regular) {
             crossfade(true)
             placeholder(R.drawable.spinner_1s_200px)
         }
+        addChildClickViews(holder.binding.image)
     }
+
 }

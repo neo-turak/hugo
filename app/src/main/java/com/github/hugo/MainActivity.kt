@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(decoration)
+        adapter.addChildClickViewIds()
 
         //json
         val str = "{\"itemType\":102210032}"
@@ -66,6 +67,7 @@ class MainActivity : AppCompatActivity() {
                 Timber.e("COLLECT-->${it}")
             }
         }
+
         lifecycleScope.launch {
          eventBus.emitEvent(AppInfoModel("Hello Kotlin", 2))
         }

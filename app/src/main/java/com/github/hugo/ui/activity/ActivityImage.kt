@@ -1,12 +1,14 @@
 package com.github.hugo.ui.activity
 
 import androidx.activity.viewModels
+import com.github.hugo.R
 import com.github.hugo.base.BaseActivity
 import com.github.hugo.databinding.ActivityImageBinding
 import com.github.hugo.ui.adapter.ImageAdapter
 import com.github.hugo.ui.decoration.ImageItemDecoration
 import com.github.hugo.ui.vm.ImageViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -37,13 +39,14 @@ class ActivityImage : BaseActivity<ActivityImageBinding>() {
         binding.rvMain.adapter = adapter
         binding.rvMain.addItemDecoration(itemDecoration)
 
-        binding.root.viewTreeObserver.addOnGlobalLayoutListener {
-            
+        adapter.setOnItemChildClickListener { adapter, view, position ->
+            Timber.e("-->${adapter.data[position]}  ${view.id == R.id.image}")
         }
         binding.refresh.setOnRefreshListener {
             binding.refresh.isRefreshing = false
             vm.getRandomImages()
         }
+
 
         vm.responseImages.observe(this) {
             adapter.setNewInstance(it)

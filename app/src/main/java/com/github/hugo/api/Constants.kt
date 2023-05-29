@@ -9,8 +9,8 @@ package com.github.hugo.api
 
  object Constants{
     //url
-   const val BASE_URL = "https://www.ghxi.com/"
-   const val UNSPLASH_URL = "https://api.unsplash.com/"
+   const val BASE_URL = "https://www.ghxi.com"
+   const val UNSPLASH_URL = "https://api.unsplash.com"
 
     //ds
     const val DS ="preferences"

@@ -1,7 +1,7 @@
 package com.github.hugo.ui.adapter
 
 import android.content.Context
-import com.github.hugo.base.BaseBindingAdapter
+import com.github.hugo.base.BaseBindingBindingAdapter
 import com.github.hugo.base.VBBaseViewHolder
 import com.github.hugo.databinding.ItemSoftwareBinding
 import com.github.hugo.room.SoftwareEntity
@@ -21,7 +21,7 @@ class MainAdapter
 constructor(
    @ActivityContext
    context: Context
-) : BaseBindingAdapter<ItemSoftwareBinding, SoftwareEntity>() {
+) : BaseBindingBindingAdapter<ItemSoftwareBinding, SoftwareEntity>() {
     override fun convert(
         holder: VBBaseViewHolder<ItemSoftwareBinding>,
         item: SoftwareEntity
