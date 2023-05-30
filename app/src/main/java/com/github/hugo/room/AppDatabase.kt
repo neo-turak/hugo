@@ -5,6 +5,8 @@ import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import com.github.hugo.api.Constants
+import com.github.hugo.room.dao.SoftwareDao
+import com.github.hugo.room.entity.SoftwareEntity
 
 
 /**

@@ -1,4 +1,4 @@
-package com.github.hugo.room
+package com.github.hugo.room.entity
 
 import android.os.Parcelable
 import androidx.annotation.Keep

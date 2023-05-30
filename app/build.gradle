@@ -69,6 +69,7 @@ dependencies {
     }
     //room
     implementation 'androidx.room:room-runtime:2.5.1'
+    implementation 'androidx.room:room-ktx:2.5.1'
     kapt('androidx.room:room-compiler:2.5.1') {
         exclude group: 'androidx.arch.core:core-runtime:2.1.0', module:'core-runtime'
     }
@@ -120,5 +121,8 @@ dependencies {
 
     //splash screen
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
+    //lottie
+    implementation 'com.airbnb.android:lottie:6.0.0'
 
 }

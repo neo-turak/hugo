@@ -3,7 +3,7 @@ package com.github.hugo.model
 
 import android.os.Parcelable
 import androidx.annotation.Keep
-import com.github.hugo.room.SoftwareEntity
+import com.github.hugo.room.entity.SoftwareEntity
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 

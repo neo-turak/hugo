@@ -1,9 +1,10 @@
-package com.github.hugo.room
+package com.github.hugo.room.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.github.hugo.room.entity.SoftwareEntity
 
 /**
  * @author 努尔江
@@ -16,17 +17,17 @@ import androidx.room.Query
 interface SoftwareDao {
 
     @Query("SELECT * FROM software")
-    fun getAll(): List<SoftwareEntity>
+   suspend fun getAll(): List<SoftwareEntity>
 
     @Query("SELECT * FROM software WHERE uid in (:Ids)")
-    fun loadAllByIds(Ids: IntArray): List<SoftwareEntity>
+   suspend fun loadAllByIds(Ids: IntArray): List<SoftwareEntity>
 
     @Query("SELECT * FROM software WHERE title LIKE :title AND url LIKE :url LIMIT 1")
-    fun findByTitleUrl(title: String, url: String): SoftwareEntity
+    suspend fun findByTitleUrl(title: String, url: String): SoftwareEntity
 
     @Insert
-    fun insertAll(vararg user: SoftwareEntity)
+    suspend fun insertAll(vararg user: SoftwareEntity)
 
     @Delete
-    fun delete(software: SoftwareEntity)
+   suspend fun delete(software: SoftwareEntity)
 }

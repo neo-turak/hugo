@@ -13,7 +13,6 @@ import com.github.hugo.ui.decoration.MainItemDecoration
 import com.github.hugo.ui.vm.MainViewModel
 import com.github.neoturak.common.singleClick
 import com.github.neoturak.common.startActivity
-import com.github.neoturak.ui.immersiveStatusBar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
@@ -38,7 +37,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        immersiveStatusBar()
         //    adapter.setNewInstance(vm.multiList)
         adapter.addChildClickViewIds(R.id.image)
         adapter.setOnItemChildClickListener { adapter, _, position ->

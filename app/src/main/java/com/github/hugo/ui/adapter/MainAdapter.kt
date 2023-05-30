@@ -4,7 +4,7 @@ import android.content.Context
 import com.github.hugo.base.BaseBindingBindingAdapter
 import com.github.hugo.base.VBBaseViewHolder
 import com.github.hugo.databinding.ItemSoftwareBinding
-import com.github.hugo.room.SoftwareEntity
+import com.github.hugo.room.entity.SoftwareEntity
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
