@@ -143,13 +143,12 @@ class ActivityMarco : BaseActivity<ActivityMarcoBinding>() {
         val centerX = width / 2f
         val centerY = height / 2f
 
-        val radius = Math.min(width, height) / 2f
+        val radius = width.coerceAtMost(height) / 2f
 
         val angle = Math.PI * 2 / 5 // Angle between each point on the pentagon
         val startPointX = centerX + radius
-        val startPointY = centerY
 
-        path.moveTo(startPointX, startPointY) // Move to the starting point
+        path.moveTo(startPointX, centerY) // Move to the starting point
 
         // Calculate the coordinates of the other four points on the pentagon
         for (i in 1..4) {
@@ -159,6 +158,54 @@ class ActivityMarco : BaseActivity<ActivityMarcoBinding>() {
         }
 
         path.close() // Close the path to complete the pentagon
+
+        return path
+    }
+
+    fun cutHexagon(bitmap: Bitmap): Bitmap {
+        val hexagonWidth = bitmap.width / 2
+        val hexagonHeight = bitmap.height / 2
+
+        val output = Bitmap.createBitmap(hexagonWidth, hexagonHeight, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(output)
+
+        val path = createHexagonPath(hexagonWidth, hexagonHeight)
+
+        val paint = Paint()
+        paint.isAntiAlias = true
+
+        canvas.drawPath(path, paint)
+
+        val paintXferMode = Paint()
+        paintXferMode.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+
+        canvas.drawBitmap(bitmap, 0f, 0f, paintXferMode)
+
+        return output
+    }
+
+    fun createHexagonPath(width: Int, height: Int): Path {
+        val path = Path()
+
+        val centerX = width / 2f
+        val centerY = height / 2f
+
+        val radius = Math.min(width, height) / 2f
+
+        val angle = Math.PI * 2 / 6 // Angle between each point on the hexagon
+        val startPointX = centerX + radius
+        val startPointY = centerY
+
+        path.moveTo(startPointX, startPointY) // Move to the starting point
+
+        // Calculate the coordinates of the other five points on the hexagon
+        for (i in 1..5) {
+            val x = (centerX + radius * Math.cos(i * angle)).toFloat()
+            val y = (centerY + radius * Math.sin(i * angle)).toFloat()
+            path.lineTo(x, y) // Connect each point with a line
+        }
+
+        path.close() // Close the path to complete the hexagon
 
         return path
     }
