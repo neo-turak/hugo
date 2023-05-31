@@ -7,7 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.github.hugo.databinding.ActivityMainBinding
 import com.github.hugo.events.EventBus
 import com.github.hugo.model.AppInfoModel
-import com.github.hugo.ui.activity.ActivityMarco
+import com.github.hugo.ui.activity.ActivityImage
 import com.github.hugo.ui.adapter.HelpAdapter
 import com.github.hugo.ui.decoration.MainItemDecoration
 import com.github.hugo.ui.vm.MainViewModel
@@ -71,8 +71,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnConfirm.singleClick {
-           // startActivity<ActivityImage>()
-             startActivity<ActivityMarco>()
+            startActivity<ActivityImage>()
+         //    startActivity<ActivityMarco>()
         }
 
         //HelperDialog().show(this)

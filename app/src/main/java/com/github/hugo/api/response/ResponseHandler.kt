@@ -12,8 +12,8 @@ import timber.log.Timber
 
 
 inline fun <T> Response<HttpResponse<T>>.responseHandler(
-    onSuccess: (T) -> Unit,
-    onFailure: (Throwable) -> Unit
+   crossinline onSuccess: (T) -> Unit,
+   crossinline  onFailure: (Throwable) -> Unit
 ) {
     if (this.isSuccessful) {
         val result = this.body()
@@ -28,7 +28,7 @@ inline fun <T> Response<HttpResponse<T>>.responseHandler(
 }
 
 inline fun <T> Response<HttpResponse<T>>.responseHandler(
-    onSuccess: (T) -> Unit) {
+   crossinline onSuccess: (T) -> Unit) {
     if (this.isSuccessful) {
         val result = this.body()
         if (result?.data != null) {
@@ -41,7 +41,7 @@ inline fun <T> Response<HttpResponse<T>>.responseHandler(
     }
 }
 inline fun <T> Response<T>.responseDataHandler(
-    onSuccess: (T) -> Unit) {
+   crossinline onSuccess: (T) -> Unit) {
     if (this.isSuccessful) {
         val result = this.body()
         if (result != null) {

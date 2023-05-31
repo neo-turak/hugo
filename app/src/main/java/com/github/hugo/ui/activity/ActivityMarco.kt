@@ -18,6 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import kotlin.math.cos
+import kotlin.math.sin
 
 /**
  * @author 努尔江
@@ -56,7 +58,7 @@ class ActivityMarco : BaseActivity<ActivityMarcoBinding>() {
         this.imageLoader.enqueue(request)
         CoroutineScope(Dispatchers.IO).launch {
             delay(3000)
-            cutPentagon(dw!!)
+            cutHexagon(dw!!)
         }
     }
 
@@ -190,18 +192,17 @@ class ActivityMarco : BaseActivity<ActivityMarcoBinding>() {
         val centerX = width / 2f
         val centerY = height / 2f
 
-        val radius = Math.min(width, height) / 2f
+        val radius = width.coerceAtMost(height) / 3f
 
         val angle = Math.PI * 2 / 6 // Angle between each point on the hexagon
         val startPointX = centerX + radius
-        val startPointY = centerY
 
-        path.moveTo(startPointX, startPointY) // Move to the starting point
+        path.moveTo(startPointX, centerY) // Move to the starting point
 
         // Calculate the coordinates of the other five points on the hexagon
         for (i in 1..5) {
-            val x = (centerX + radius * Math.cos(i * angle)).toFloat()
-            val y = (centerY + radius * Math.sin(i * angle)).toFloat()
+            val x = (centerX + radius * cos(i * angle)).toFloat()
+            val y = (centerY + radius * sin(i * angle)).toFloat()
             path.lineTo(x, y) // Connect each point with a line
         }
 

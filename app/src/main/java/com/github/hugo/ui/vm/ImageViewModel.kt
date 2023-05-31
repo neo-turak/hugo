@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.hugo.api.MainRepository
-import com.github.hugo.api.response.responseDataHandler
+import com.github.hugo.api.response.HttpResult
 import com.github.hugo.model.ImageModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -21,13 +21,14 @@ import javax.inject.Inject
 class ImageViewModel
 @Inject
 constructor(private val repository: MainRepository) : ViewModel() {
-    private val _responseImages  by lazy { MutableLiveData<MutableList<ImageModel>>() }
+    private val _responseImages by lazy { MutableLiveData<MutableList<ImageModel>>() }
     val responseImages = _responseImages
 
-    fun getRandomImages(){
+    fun getRandomImages() {
         viewModelScope.launch {
-            repository.randomPhotos(count = 30).responseDataHandler {
-                _responseImages.postValue(it)
+            val c = repository.randomPhotos(count = 30)
+            if (c is HttpResult.Success) {
+                _responseImages.postValue(c.data)
             }
         }
     }

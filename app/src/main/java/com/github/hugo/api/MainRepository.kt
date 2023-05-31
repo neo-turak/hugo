@@ -1,6 +1,7 @@
 package com.github.hugo.api
 
 import com.github.hugo.api.response.HttpResponse
+import com.github.hugo.api.response.HttpResult
 import com.github.hugo.model.ImageModel
 import com.github.hugo.model.SoftwareModel
 import retrofit2.Response
@@ -15,19 +16,24 @@ import javax.inject.Inject
 
 class MainRepository
 @Inject
-constructor() : ApiService {
-    override suspend fun getSoftwareList(
-        type: String,
-        n: String
-    ): Response<HttpResponse<SoftwareModel>> {
-        return RetrofitHelper.service.getSoftwareList(type, n)
+constructor() {
+    suspend fun getSoftwareList(): Response<HttpResponse<SoftwareModel>> {
+        return RetrofitHelper.service.getSoftwareList()
     }
 
-    override suspend fun randomPhotos(
-        acceptVersion: String,
-        authorization: String,
-        count: Int
-    ): Response<MutableList<ImageModel>> {
-        return RetrofitHelper.service.randomPhotos(count = count)
+    suspend fun randomPhotos(count: Int): HttpResult<MutableList<ImageModel>> {
+        return try {
+            val response = RetrofitHelper.service.randomPhotos(count = count)
+            if (response.isSuccessful) {
+                val softwareList = response.body()
+                HttpResult.Success(softwareList!!)
+            } else {
+                val errorBody = response.errorBody()?.toString()
+                HttpResult.Error(Exception(errorBody))
+            }
+        } catch (e: Exception) {
+            HttpResult.Error(e)
+        }
     }
 }
+
