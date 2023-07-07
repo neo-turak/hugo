@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/iv_address_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="5dp"
+        android:text="幸运驾校"
+        app:drawableLeftCompat="@drawable/ic_icon_location"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/iv_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:drawableEnd="@drawable/ic_weather_icon"
+        android:drawablePadding="5dp"
+        android:text="28℃"
+        app:layout_constraintBottom_toBottomOf="@id/iv_address_name"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_address_name" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_video_icon"
+        app:layout_constraintBottom_toBottomOf="@id/iv_weather"
+        app:layout_constraintRight_toLeftOf="@id/iv_weather"
+        app:layout_constraintTop_toTopOf="@id/iv_weather" />
+
+    <com.github.neoturak.view.ShapeableView
+        android:id="@+id/iv_search"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_address_name"
+        app:shape_cornersRadius="6dp"
+        app:shape_soldColor="#f5f5f5" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:drawableStart="@drawable/baseline_search_24"
+        android:drawableTint="#696969"
+        android:gravity="center"
+        android:text="请输入搜索内容"
+        android:textColor="#696969"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_address_name" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_search">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:padding="10dp"
+                app:banner_indicator_normal_color="#2b2b2b"
+                app:banner_indicator_selected_color="#CC0000"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/banner"
+                app:spanCount="4"
+                tools:itemCount="8"
+                tools:listitem="@layout/item_home_menu" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/rv_menu">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="优惠"
+                    android:textSize="32sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="· 活动"
+                    android:textColor="#CC0000"
+                    android:textSize="32sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_store_1"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/iv_store_2"
+                app:layout_constraintTop_toBottomOf="@id/ll1"
+                app:shapeAppearanceOverlay="@style/shape_6dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_store_2"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="@dimen/dp_10"
+                app:layout_constraintLeft_toRightOf="@id/iv_store_1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll1"
+                app:shapeAppearanceOverlay="@style/shape_6dp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/iv_store_2">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="为您"
+                    android:textSize="32sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="· 精选"
+                    android:textColor="#CC0000"
+                    android:textSize="32sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_recommend_1"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/iv_recommend_2"
+                app:layout_constraintTop_toBottomOf="@id/ll2"
+                app:shapeAppearanceOverlay="@style/shape_6dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_recommend_2"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintLeft_toRightOf="@id/iv_recommend_1"
+                app:layout_constraintRight_toLeftOf="@id/iv_recommend_3"
+                app:layout_constraintTop_toBottomOf="@id/ll2"
+                app:shapeAppearanceOverlay="@style/shape_6dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_recommend_3"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintLeft_toRightOf="@id/iv_recommend_2"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll2"
+                app:shapeAppearanceOverlay="@style/shape_6dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -121,4 +121,6 @@ dependencies {
 
     //splash screen
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
+    implementation 'io.github.youth5201314:banner:2.2.2'
 }
