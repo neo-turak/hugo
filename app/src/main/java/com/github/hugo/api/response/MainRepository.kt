@@ -2,6 +2,7 @@ package com.github.hugo.api.response
 
 import com.github.hugo.api.ApiService
 import com.github.hugo.model.ImageModel
+import com.github.hugo.model.ShopAdminModel
 import com.github.hugo.model.SoftwareModel
 import retrofit2.Response
 import javax.inject.Inject
@@ -29,5 +30,12 @@ constructor() : ApiService {
         count: Int
     ): Response<MutableList<ImageModel>> {
         return RetrofitHelper.service.randomPhotos(count = count)
+    }
+
+    override suspend fun shopAdminLogin(
+        mobile: String,
+        pwd: String
+    ): Response<HttpResponse<ShopAdminModel?>> {
+        return RetrofitHelper.service.shopAdminLogin(mobile, pwd)
     }
 }

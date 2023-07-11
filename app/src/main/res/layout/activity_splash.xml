@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00aa27">
+    android:background="#cc5544">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="咕咕外卖"
+        android:text="咕咕外卖-商家版"
         android:textColor="@color/white"
         android:textSize="32sp"
         app:layout_constraintLeft_toLeftOf="parent"

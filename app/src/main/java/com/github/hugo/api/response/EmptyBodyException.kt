@@ -7,8 +7,8 @@ package com.github.hugo.api.response
  * Description:
  **/
 
-class EmptyBodyException:Exception() {
+class EmptyBodyException(private val msg: String) : Exception() {
 
     override val message: String
-        get() = "Empty response body exception."
+        get() = msg
 }

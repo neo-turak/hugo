@@ -7,16 +7,19 @@ package com.github.hugo.api
  * Description:
  **/
 
- object Constants{
+object Constants {
+
     //url
-   const val BASE_URL = "https://www.ghxi.com/"
-   const val UNSPLASH_URL = "https://api.unsplash.com/"
+    const val BASE_URL = "https://www.ghxi.com/"
+    const val UNSPLASH_URL = "https://api.unsplash.com/"
+    const val MAIN_URL = "http://192.168.1.147:8080"
 
     //ds
-    const val DS ="preferences"
-    const val DS_NEW_USER="ds_new_user"
+    const val DS = "preferences"
+    const val DS_NEW_USER = "ds_new_user"
+    const val DS_USER_INFO: String = "ds_user_info"
 
     //room name
     const val ROOM = "room"
-    const val DB_SOFTWARE="software"
- }
+    const val DB_SOFTWARE = "software"
+}

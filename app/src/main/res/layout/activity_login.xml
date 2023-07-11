@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:text="欢迎登录"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.neoturak.view.ShapeableView
+        android:id="@+id/sv1"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+        app:shape_cornersRadius="4dp"
+        app:shape_soldColor="#f6f6f6" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_mine_icon"
+        android:tint="#666666"
+        app:layout_constraintBottom_toBottomOf="@id/sv1"
+        app:layout_constraintLeft_toLeftOf="@id/sv1"
+        app:layout_constraintTop_toTopOf="@id/sv1" />
+
+    <EditText
+        android:id="@+id/et_phone_number"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/transparent"
+        android:hint="请输入手机号"
+        android:inputType="phone"
+        android:maxEms="11"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/ivIcon"
+        app:layout_constraintLeft_toRightOf="@id/ivIcon"
+        app:layout_constraintRight_toRightOf="@id/sv1"
+        app:layout_constraintTop_toTopOf="@id/ivIcon" />
+
+    <com.github.neoturak.view.ShapeableView
+        android:id="@+id/sv2"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sv1"
+        app:shape_cornersRadius="4dp"
+        app:shape_soldColor="#f6f6f6" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivIconPassword"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_login"
+        app:layout_constraintBottom_toBottomOf="@id/sv2"
+        app:layout_constraintLeft_toLeftOf="@id/sv2"
+        app:layout_constraintTop_toTopOf="@id/sv2" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="60dp"
+        android:background="@color/transparent"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:maxEms="8"
+        android:text=""
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/ivIconPassword"
+        app:layout_constraintLeft_toRightOf="@id/ivIconPassword"
+        app:layout_constraintRight_toRightOf="@id/sv1"
+        app:layout_constraintTop_toTopOf="@id/ivIconPassword" />
+
+    <ImageView
+        android:id="@+id/iv_eye"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/ic_eye_close"
+        app:layout_constraintBottom_toBottomOf="@id/sv2"
+        app:layout_constraintRight_toRightOf="@id/sv2"
+        app:layout_constraintTop_toTopOf="@id/sv2" />
+
+    <com.github.neoturak.view.ShapeableTextView
+        android:id="@+id/tv_login"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/dp_40"
+        android:gravity="center"
+        android:text="立即登录"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sv2"
+        app:shape_cornersRadius="4dp"
+        app:shape_soldColor="@color/md_theme_light_tertiary" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="如需帮助，请拨打 15600688040"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

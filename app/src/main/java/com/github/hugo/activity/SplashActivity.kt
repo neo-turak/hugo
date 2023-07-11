@@ -7,7 +7,6 @@ import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.github.hugo.MainActivity
 import com.github.hugo.databinding.ActivitySplashBinding
 import com.github.neoturak.ui.immersiveStatusBar
 import com.github.neoturak.ui.startActivity
@@ -73,7 +72,7 @@ class SplashActivity : AppCompatActivity() {
             if (animatedValue == 100) {
                 valueAnimation.cancel()
                 binding.siv.clearAnimation()
-                startActivity<MainActivity>()
+                startActivity<LoginActivity>()
                 finish()
             }
         }
