@@ -6,8 +6,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.github.hugo.fragment.HomeFragment
 import com.github.hugo.fragment.MineFragment
-import com.github.hugo.fragment.OrderFragment
 import com.github.hugo.fragment.VIPFragment
+import com.github.hugo.fragment.order.OrderFragment
 
 /**
  *@author   Hugo

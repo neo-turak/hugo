@@ -1,4 +1,4 @@
-package com.github.hugo.fragment
+package com.github.hugo.fragment.order
 
 import android.os.Bundle
 import android.view.LayoutInflater

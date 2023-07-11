@@ -1,6 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#00cc66"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/baseline_settings_24"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.neoturak.view.ShapeableTextView
+        android:id="@+id/id_avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:text="咕咕"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape_cornersRadius="40dp"
+        app:shape_soldColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="登录"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_avatar" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/iv_my_orders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="订单"
+        app:drawableTopCompat="@drawable/ic_mine_orders"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/iv_my_address"
+        app:layout_constraintTop_toBottomOf="@id/tv_login" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/iv_my_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="地址"
+        app:drawableTopCompat="@drawable/ic_mine_address"
+        app:layout_constraintLeft_toRightOf="@id/iv_my_orders"
+        app:layout_constraintRight_toLeftOf="@id/iv_mine_comment"
+        app:layout_constraintTop_toBottomOf="@id/tv_login" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/iv_mine_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="评论"
+        app:drawableTopCompat="@drawable/ic_mine_praise"
+        app:layout_constraintLeft_toRightOf="@id/iv_my_address"
+        app:layout_constraintRight_toLeftOf="@id/iv_mine_collect"
+        app:layout_constraintTop_toBottomOf="@id/tv_login" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/iv_mine_collect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="收藏"
+        app:drawableTopCompat="@drawable/ic_mine_collect"
+        app:layout_constraintLeft_toRightOf="@id/iv_mine_comment"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/iv_mine_comment">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#f5f5f5"
+            app:layout_constraintTop_toBottomOf="@id/iv_mine_comment" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@drawable/baseline_chevron_right_24"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:text="红包" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@drawable/baseline_chevron_right_24"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:text="分享赚佣金" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#f5f5f5"
+            app:layout_constraintTop_toBottomOf="@id/iv_mine_comment" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@drawable/baseline_chevron_right_24"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:text="加入骑手" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@drawable/baseline_chevron_right_24"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:text="加入咕咕" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@drawable/baseline_chevron_right_24"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:text="成为代理" />
+
+        <View
+            android:id="@+id/v_1"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#f5f5f5"
+            app:layout_constraintTop_toBottomOf="@id/iv_mine_comment" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@drawable/baseline_chevron_right_24"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:text="联系我们" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@drawable/baseline_chevron_right_24"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:text="反馈意见" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@drawable/baseline_chevron_right_24"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:text="关于我们" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
