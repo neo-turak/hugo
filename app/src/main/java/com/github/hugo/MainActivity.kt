@@ -27,18 +27,13 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.navigation_vip -> {
+                R.id.navigation_order -> {
                     binding.viewPager2.currentItem = 1
                     true
                 }
 
-                R.id.navigation_order -> {
-                    binding.viewPager2.currentItem = 2
-                    true
-                }
-
                 R.id.navigation_mine -> {
-                    binding.viewPager2.currentItem = 3
+                    binding.viewPager2.currentItem = 2
                     true
                 }
 

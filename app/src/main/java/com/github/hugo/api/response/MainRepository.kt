@@ -3,7 +3,9 @@ package com.github.hugo.api.response
 import com.github.hugo.api.ApiService
 import com.github.hugo.model.ImageModel
 import com.github.hugo.model.ShopAdminModel
+import com.github.hugo.model.ShopInfoModel
 import com.github.hugo.model.SoftwareModel
+import com.github.hugo.model.WaitingOrderBean
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -37,5 +39,13 @@ constructor() : ApiService {
         pwd: String
     ): Response<HttpResponse<ShopAdminModel?>> {
         return RetrofitHelper.service.shopAdminLogin(mobile, pwd)
+    }
+
+    override suspend fun getShopInfo(shopId: Int): Response<HttpResponse<ShopInfoModel>> {
+        return RetrofitHelper.service.getShopInfo(shopId)
+    }
+
+    override suspend fun getWaitingOrderDetails(shopId: Int): Response<HttpResponse<WaitingOrderBean>> {
+        return RetrofitHelper.service.getWaitingOrderDetails(shopId)
     }
 }

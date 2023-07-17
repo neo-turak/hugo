@@ -6,7 +6,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.github.hugo.fragment.HomeFragment
 import com.github.hugo.fragment.MineFragment
-import com.github.hugo.fragment.VIPFragment
 import com.github.hugo.fragment.order.OrderFragment
 
 /**
@@ -19,10 +18,10 @@ import com.github.hugo.fragment.order.OrderFragment
 class HomePageAdapter(fm: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fm, lifecycle) {
     private val fragments by lazy {
-        mutableListOf(HomeFragment(), VIPFragment(), OrderFragment(), MineFragment())
+        mutableListOf(HomeFragment(), OrderFragment(), MineFragment())
     }
 
-    override fun getItemCount() = 4
+    override fun getItemCount() = fragments.size
 
     override fun createFragment(position: Int): Fragment {
         return fragments[position]

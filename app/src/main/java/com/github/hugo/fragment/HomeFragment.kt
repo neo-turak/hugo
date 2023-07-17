@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import coil.load
-import com.github.hugo.R
-import com.github.hugo.adapter.HomeBannerAdapter
-import com.github.hugo.adapter.HomeMenuAdapter
+import com.github.hugo.adapter.WaitingOrderAdapter
 import com.github.hugo.databinding.FragmentHomeBinding
-import com.github.hugo.model.HomeMenuModel
-import com.youth.banner.indicator.CircleIndicator
+import com.github.hugo.vm.MainViewModel
 
 /**
  *@author   Hugo
@@ -23,8 +21,8 @@ import com.youth.banner.indicator.CircleIndicator
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding by lazy { _binding!! }
-    private val bannerAdapter by lazy { HomeBannerAdapter() }
-    private val menuAdapter by lazy { HomeMenuAdapter() }
+    private val vm: MainViewModel by activityViewModels()
+    private val adapter = WaitingOrderAdapter()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,29 +34,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val indicator = CircleIndicator(requireContext())
-        binding.banner.addBannerLifecycleObserver(this)
-            .setAdapter(bannerAdapter)
-            .indicator = indicator
-        menuAdapter.setNewInstance(
-            mutableListOf(
-                HomeMenuModel(0, R.drawable.ic_home_menu_pizza, "西餐"),
-                HomeMenuModel(0, R.drawable.ic_home_menu_fastfood, "快餐"),
-                HomeMenuModel(0, R.drawable.ic_home_menu_breakfast, "早餐"),
-                HomeMenuModel(0, R.drawable.ic_home_menu_cake, "蛋糕"),
-                HomeMenuModel(0, R.drawable.ic_home_menu_flowers, "鲜花"),
-                HomeMenuModel(0, R.drawable.ic_home_menu_supermarket, "超市"),
-                HomeMenuModel(0, R.drawable.ic_home_menu_charger, "手机充电"),
-                HomeMenuModel(0, R.drawable.ic_home_menu_chargetool, "充电宝")
-            )
-        )
-        binding.rvMenu.adapter = menuAdapter
-        ///
-        binding.ivStore1.load("https://media.altphotos.com/cache/images/2017/02/22/16/752/salmon-toasts-restaurant.jpg")
-        binding.ivStore2.load("https://media.altphotos.com/cache/images/2017/08/23/08/752/salad-mushrooms-meal.jpg")
-
-        binding.ivRecommend1.load("https://img1.baidu.com/it/u=1130284450,2967175022&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=809")
-        binding.ivRecommend2.load("https://img2.baidu.com/it/u=2866281629,1984819473&fm=253&fmt=auto&app=138&f=JPEG?w=723&h=500")
-        binding.ivRecommend3.load("https://img0.baidu.com/it/u=3314032808,2980710415&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500")
+        vm.shopInfoModel.observe(viewLifecycleOwner) {
+            binding.tvName.text = it.name
+            binding.ivBg.load(it.bgImage)
+        }
+        binding.rvOrder.adapter = adapter
+        vm.waitingOrderModel.observe(viewLifecycleOwner) {
+            adapter.setNewInstance(it)
+        }
+        vm.getWaitingOrderDetails()
     }
 }

@@ -9,6 +9,7 @@ package com.github.hugo.api
 
 object Constants {
 
+
     //url
     const val BASE_URL = "https://www.ghxi.com/"
     const val UNSPLASH_URL = "https://api.unsplash.com/"
@@ -18,6 +19,7 @@ object Constants {
     const val DS = "preferences"
     const val DS_NEW_USER = "ds_new_user"
     const val DS_USER_INFO: String = "ds_user_info"
+    const val DS_SHOP_ID: String = "ds_shop_id"
 
     //room name
     const val ROOM = "room"

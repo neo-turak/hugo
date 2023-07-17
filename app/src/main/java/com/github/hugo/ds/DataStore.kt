@@ -5,11 +5,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.github.hugo.api.Constants
 import com.github.hugo.helper.JSONHelper
-import com.github.hugo.helper.toJson
 import com.github.hugo.model.ShopAdminModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -28,7 +28,7 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = Con
 //sub
 val dsNewUser = booleanPreferencesKey(Constants.DS_NEW_USER)
 val dsUserInfo = stringPreferencesKey(Constants.DS_USER_INFO)
-
+val dsShopId = intPreferencesKey(Constants.DS_SHOP_ID)
 //read function
 suspend fun Context.newUser(): Boolean {
 
@@ -46,9 +46,10 @@ suspend fun Context.setNewUser(boolean: Boolean) {
     }
 }
 
-suspend fun Context.saveAdminInfo(shopAdminModel: String) {
+suspend fun Context.saveAdminInfo(shopAdminModel: ShopAdminModel) {
     this.dataStore.edit { settings ->
-        settings[dsUserInfo] = shopAdminModel.toJson()
+        settings[dsUserInfo] = JSONHelper.instance.toJSONString(shopAdminModel)
+        settings[dsShopId] = shopAdminModel.shopId
     }
 }
 

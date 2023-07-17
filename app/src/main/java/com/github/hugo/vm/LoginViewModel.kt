@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.github.hugo.api.response.MainRepository
 import com.github.hugo.api.response.responseHandler
 import com.github.hugo.ds.saveAdminInfo
-import com.github.hugo.helper.toJson
 import com.github.hugo.model.ShopAdminModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -48,7 +47,7 @@ constructor(
 
     private fun write2Local(shopAdminModel: ShopAdminModel) {
         viewModelScope.launch {
-            application.saveAdminInfo(shopAdminModel.toJson())
+            application.saveAdminInfo(shopAdminModel)
         }
     }
 

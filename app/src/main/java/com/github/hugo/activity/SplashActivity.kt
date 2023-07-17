@@ -7,7 +7,9 @@ import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.github.hugo.MainActivity
 import com.github.hugo.databinding.ActivitySplashBinding
+import com.github.hugo.ds.getAdminInfo
 import com.github.neoturak.ui.immersiveStatusBar
 import com.github.neoturak.ui.startActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,6 +66,13 @@ class SplashActivity : AppCompatActivity() {
     private fun counter() {
         val valueAnimation = ValueAnimator.ofInt(0, 100)
         valueAnimation.duration = 4000L
+        var id = 0
+        CoroutineScope(Dispatchers.IO).launch {
+            val result = this@SplashActivity.getAdminInfo()
+            if (result != null) {
+                id = result.shopId
+            }
+        }
         valueAnimation.interpolator = AccelerateInterpolator()
         valueAnimation.addUpdateListener { animator ->
             val animatedValue = animator.animatedValue as Int
@@ -72,7 +81,11 @@ class SplashActivity : AppCompatActivity() {
             if (animatedValue == 100) {
                 valueAnimation.cancel()
                 binding.siv.clearAnimation()
-                startActivity<LoginActivity>()
+                if (id == 0) {
+                    startActivity<LoginActivity>()
+                } else {
+                    startActivity<MainActivity>()
+                }
                 finish()
             }
         }
