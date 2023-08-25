@@ -40,8 +40,9 @@ class HomeFragment : Fragment() {
         }
         binding.rvOrder.adapter = adapter
         vm.waitingOrderModel.observe(viewLifecycleOwner) {
-            adapter.setNewInstance(it)
+           // adapter.setNewInstance(it)
         }
         vm.getWaitingOrderDetails()
     }
+
 }

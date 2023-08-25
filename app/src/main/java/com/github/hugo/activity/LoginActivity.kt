@@ -33,14 +33,14 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         //事件
         binding.tvLogin.singleClick {
-            if (binding.etPassword.text.length == 8 && binding.etPhoneNumber.text.toString().length == 11) {
-                checkMobilePwd(
-                    binding.etPhoneNumber.text.toString().trim(),
-                    binding.etPassword.text.toString()
-                )
-            } else {
-                CustomToast(this@LoginActivity, "请输入手机号和密码").show()
-            }
+          if (binding.etPassword.text.length == 8 && binding.etPhoneNumber.text.toString().length == 11) {
+              checkMobilePwd(
+                  binding.etPhoneNumber.text.toString().trim(),
+                  binding.etPassword.text.toString()
+              )
+          } else {
+              CustomToast(this@LoginActivity, "请输入手机号和密码").show()
+          }
         }
         vm.msg.observe(this) {
             CustomToast(this@LoginActivity, it).show()
@@ -79,4 +79,5 @@ class LoginActivity : AppCompatActivity() {
     private fun checkMobilePwd(mobile: String, pwd: String) {
         vm.shopAdminLogin(mobile, pwd)
     }
+
 }

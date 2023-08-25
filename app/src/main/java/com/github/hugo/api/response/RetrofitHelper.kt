@@ -1,6 +1,8 @@
 package com.github.hugo.api.response
 
-import com.ayvytr.okhttploginterceptor.LoggingInterceptor
+import cn.nurasoft.request.DefaultFormatPrinter
+import cn.nurasoft.request.PrintLevel
+import cn.nurasoft.request.RequestInterceptor
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.github.hugo.api.ApiService
 import com.github.hugo.api.Constants
@@ -19,10 +21,13 @@ import java.util.concurrent.TimeUnit
  **/
 
 object RetrofitHelper {
-    private val loggingInterceptor = LoggingInterceptor()
+    private val interceptor = RequestInterceptor.Builder()
+        .setFormatPrinter(DefaultFormatPrinter())
+        .setPrintLevel(PrintLevel.ALL)
+        .build()
     private val okHttpClient = OkHttpClient
         .Builder()
-        .addInterceptor(loggingInterceptor)
+        .addInterceptor(interceptor)
         .addNetworkInterceptor(FlipperOkhttpInterceptor(networkFlipperPlugin))
         .connectTimeout(10, TimeUnit.SECONDS)
         .readTimeout(10, TimeUnit.SECONDS)

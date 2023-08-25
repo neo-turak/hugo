@@ -13,7 +13,7 @@ object Constants {
     //url
     const val BASE_URL = "https://www.ghxi.com/"
     const val UNSPLASH_URL = "https://api.unsplash.com/"
-    const val MAIN_URL = "http://192.168.1.147:8080"
+    const val MAIN_URL = "http://192.168.3.12:8077"
 
     //ds
     const val DS = "preferences"

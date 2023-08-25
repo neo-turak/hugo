@@ -23,8 +23,7 @@ interface ApiService {
         @Header("Accept-Version") acceptVersion: String = "v1",
         @Header("Authorization") authorization: String = "Client-ID yI9uzM249kARnvRXZMZW-VORzUFSzHGi5u0CLYxHeC4",
         @Query("count") count: Int
-    )
-            : Response<MutableList<ImageModel>>
+    ): Response<MutableList<ImageModel>>
 
     @GET("${Constants.MAIN_URL}/api/shop/admin/login")
     suspend fun shopAdminLogin(
