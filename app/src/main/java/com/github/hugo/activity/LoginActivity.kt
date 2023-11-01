@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         //事件
         binding.tvLogin.singleClick {
-          if (binding.etPassword.text.length == 8 && binding.etPhoneNumber.text.toString().length == 11) {
+            if (binding.etPassword.text.length == 6 && binding.etPhoneNumber.text.toString().length == 11) {
               checkMobilePwd(
                   binding.etPhoneNumber.text.toString().trim(),
                   binding.etPassword.text.toString()
